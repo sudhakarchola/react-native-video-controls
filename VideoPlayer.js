@@ -544,6 +544,20 @@ export default class VideoPlayer extends Component {
       );
     }
   }
+  
+  /**
+   * Calculate the time to show in the timer area
+   * based on if they want to see time remaining
+   * or duration. Formatted to look as 00:00.
+   */
+  durationTime() {
+    if (this.state.showTimeRemaining) {
+      const time = this.state.duration;
+      return `${this.formatTime(time)}`;
+    }
+
+    return this.formatTime(this.state.currentTime);
+  }
 
   /**
    * Calculate the time to show in the timer area
@@ -1047,7 +1061,10 @@ export default class VideoPlayer extends Component {
   renderBottomControls() {
     const timerControl = this.props.disableTimer
       ? this.renderNullControl()
-      : this.renderTimer();
+      : this.renderDuration();
+    const durationControl = this.props.disableTimer
+      ? this.renderNullControl()
+      : this.renderDuration();
     const seekbarControl = this.props.disableSeekbar
       ? this.renderNullControl()
       : this.renderSeekbar();
@@ -1074,7 +1091,7 @@ export default class VideoPlayer extends Component {
             {timerControl}
             {playPauseControl}
             {this.renderTitle()}
-            {timerControl}
+            {durationControl}
           </SafeAreaView>
         </ImageBackground>
       </Animated.View>
@@ -1155,6 +1172,18 @@ export default class VideoPlayer extends Component {
 
     return null;
   }
+  
+  /**
+   * Show our timer.
+   */
+  renderDuration() {
+    return this.renderControl(
+      <Text style={styles.controls.timerText}>{this.durationTime()}</Text>,
+      this.methods.toggleTimer,
+      styles.controls.timer,
+    );
+  }
+
 
   /**
    * Show our timer.
