@@ -32,7 +32,7 @@ export default class VideoPlayer extends Component {
     title: '',
     rate: 1,
     showTimeRemaining: true,
-    showHours: false,
+    showHours: true,
   };
 
   constructor(props) {
