@@ -1072,6 +1072,7 @@ export default class VideoPlayer extends Component {
           <SafeAreaView
             style={[styles.controls.row, styles.controls.bottomControlGroup]}>
             {playPauseControl}
+{timerControl}
             {this.renderTitle()}
             {timerControl}
           </SafeAreaView>
