@@ -551,12 +551,7 @@ export default class VideoPlayer extends Component {
    * or duration. Formatted to look as 00:00.
    */
   durationTime() {
-    if (this.state.showTimeRemaining) {
-      const time = this.state.duration;
-      return `${this.formatTime(time)}`;
-    }
-
-    return this.formatTime(this.state.currentTime);
+    return this.formatTime(this.state.duration);
   }
 
   /**
@@ -1061,7 +1056,7 @@ export default class VideoPlayer extends Component {
   renderBottomControls() {
     const timerControl = this.props.disableTimer
       ? this.renderNullControl()
-      : this.renderDuration();
+      : this.renderTimer();
     const durationControl = this.props.disableTimer
       ? this.renderNullControl()
       : this.renderDuration();
