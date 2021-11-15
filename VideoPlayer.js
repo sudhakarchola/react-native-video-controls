@@ -1409,7 +1409,7 @@ const styles = {
     timerText: {
       backgroundColor: 'transparent',
       color: '#FFF',
-      fontSize: 11,
+      fontSize: 10,
       textAlign: 'right',
     },
   }),
