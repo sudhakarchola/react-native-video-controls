@@ -1404,7 +1404,7 @@ const styles = {
       textAlign: 'center',
     },
     timer: {
-      width: 100,
+      width: 80,
     },
     timerText: {
       backgroundColor: 'transparent',
